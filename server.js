@@ -1,14 +1,22 @@
 const express = require("express");
 const path = require("path");
+const session = require("express-session")
 ///
-
 const app = express();
 const port = 3000;
 const apiRouter = require('./routes/api/routes')
 const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
+app.use(session({
+    secret: 'your_secret_key_here',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60 * 60 * 1000 }
+}))
 ///
 app.use('/api', apiRouter)
 app.use('/', authRouter)
+app.use('/', userRouter)
 app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "public/index.html"));
 }) 
