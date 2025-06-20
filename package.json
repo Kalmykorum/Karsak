@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node db-init.js && nodemon server.js"
   },
   "keywords": [],
-  "author": "elliethefemboyy",
+  "author": "Kalmykorum",
   "license": "ISC",
   "description": "",
   "dependencies": {

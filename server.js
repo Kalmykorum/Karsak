@@ -14,12 +14,8 @@ const db = new sqlite.Database("./users.db", (err) => {
 		console.log("connected to sqlite database");
 	}
 });
-const saltRounds = 10
-///
 
-db.run(
-	"CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, password TEXT)"
-);
+const saltRounds = 10
 ///
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
