@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const user = express.Router()
 function isAuthenticated(req, res, next) {
   if (req.session.user) {
@@ -8,7 +9,7 @@ function isAuthenticated(req, res, next) {
   }
 }
 user.get('/dashboard', isAuthenticated, (req, res) => {
-    res.send(req.session.user)
+    res.sendFile(path.join(__dirname, "../public/dashboard.html"))
 })
 
 module.exports = user 

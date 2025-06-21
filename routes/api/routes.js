@@ -127,5 +127,12 @@ api.post("/login", async (req, res) => {
     }
   );
 });
-
+api.post("/logout", (req, res) => {
+	req.session.destroy(err => {
+		if (err) {
+			return res.status(500).send('Error logging out');
+		}
+		return res.status(200).send("logged out sucessfully")
+	})
+})
 module.exports = api;
