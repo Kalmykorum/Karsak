@@ -18,7 +18,7 @@ app.use('/api', apiRouter)
 app.use('/', authRouter)
 app.use('/', userRouter)
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "public/index.html"));
+	res.sendFile(path.join(__dirname, "pages/index.html"));
 }) 
 app.listen(port, () => {
 		console.log(`Server listening at http://localhost:${port}`);

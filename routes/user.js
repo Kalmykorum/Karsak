@@ -9,7 +9,7 @@ function isAuthenticated(req, res, next) {
   }
 }
 user.get('/dashboard', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/dashboard.html"))
+    res.sendFile(path.join(__dirname, "../pages/dashboard.html"))
 })
 
 module.exports = user 
