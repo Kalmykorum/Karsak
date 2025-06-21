@@ -72,10 +72,9 @@ api.post("/signup", async (req, res) => {
                 .status(500)
                 .send("Failed to register user due to a server error.");
             }
-            console.log(`User ${username} registered with ID: ${this.lastID}`);
             return res
               .status(201)
-              .send("User registered successfully. You can now log in.");
+              .redirect("/login")
           }
         );
       } catch (hashErr) {
@@ -114,7 +113,7 @@ api.post("/login", async (req, res) => {
         const match = await bcrypt.compare(password, row.password);
         if (match) {
           req.session.user = { id: row.id, username: row.name };
-          return res.status(200).send("Login successful!");
+          return res.redirect("/dashboard")
         } else {
           return res.status(401).send("Invalid username or password.");
         }
@@ -132,7 +131,7 @@ api.post("/logout", (req, res) => {
 		if (err) {
 			return res.status(500).send('Error logging out');
 		}
-		return res.status(200).send("logged out sucessfully")
+		return res.redirect("/")
 	})
 })
 module.exports = api;
