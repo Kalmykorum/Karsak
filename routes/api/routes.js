@@ -112,7 +112,7 @@ api.post("/login", async (req, res) => {
       try {
         const match = await bcrypt.compare(password, row.password);
         if (match) {
-          req.session.user = { id: row.id, username: row.name };
+          req.session.account = { id: row.id, username: row.name };
           return res.redirect("/dashboard")
         } else {
           return res.status(401).send("Invalid username or password.");
