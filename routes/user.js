@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const session = require("express-session")
 const user = express.Router()
 function isAuthenticated(req, res, next) {
   if (req.session.user) {
@@ -9,7 +10,11 @@ function isAuthenticated(req, res, next) {
   }
 }
 user.get('/dashboard', isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../pages/dashboard.html"))
+    res.render("../views/dashboard", {
+      account: req.session.user,
+      title: "Dashboard"
+    })
+    // res.sendFile(path.join(__dirname, "../pages/dashboard.html"))
 })
 
 module.exports = user 

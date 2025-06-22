@@ -2,17 +2,29 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session")
 ///
+
 const app = express();
 const port = 3000;
-const apiRouter = require('./routes/api/routes')
-const authRouter = require('./routes/auth')
-const userRouter = require('./routes/user')
 app.use(session({
     secret: 'your_secret_key_here',
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 60 * 60 * 1000 }
 }))
+const { engine } = require('express-handlebars'); 
+
+app.engine('handlebars', engine({
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    partialsDir: path.join(__dirname, 'views/partials')
+}));
+app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
+
+const apiRouter = require('./routes/api/routes')
+const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
+
 ///
 app.use('/api', apiRouter)
 app.use('/', authRouter)
