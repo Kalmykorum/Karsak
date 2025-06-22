@@ -3,9 +3,13 @@ const path = require('path')
 const auth = express.Router()
 
 auth.get("/login", (req, res) => {
-    res.sendFile(path.join(__dirname, "../pages/login.html"));
+    res.render("../views/login", {
+        title: "Login"
+    });
 });
 auth.get("/signup", (req, res) => {
-    res.sendFile(path.join(__dirname, "../pages/signup.html"))
+    res.render("../views/signup", {
+        title: "Login"
+    });
 })
 module.exports = auth
