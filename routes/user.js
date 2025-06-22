@@ -1,6 +1,4 @@
 const express = require('express')
-const path = require('path')
-const session = require("express-session")
 const user = express.Router()
 function isAuthenticated(req, res, next) {
   if (req.session.account) {
