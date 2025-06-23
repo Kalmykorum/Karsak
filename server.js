@@ -21,6 +21,7 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
 
   res.locals.api_error = req.flash("api_error");
+  next()
 });
 const { engine } = require("express-handlebars");
 
@@ -40,13 +41,12 @@ const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
 
 ///
+app.use(express.json())
+app.use(express.urlencoded())
 app.use(express.static("public"));
 app.use("/api", apiRouter);
 app.use("/", authRouter);
 app.use("/", userRouter);
-app.use((req, res, next) => {
-  res.status(404).send("Sorry, can't find that!");
-});
 app.get("/", (req, res) => {
   return res.redirect("/dashboard");
 });
@@ -55,4 +55,7 @@ app.listen(port, (err) => {
     return console.log("error starting server: ", err);
   }
   console.log(`Server listening at http://localhost:${port}`);
+});
+app.use((req, res, next) => {
+  res.status(404).send("Sorry, can't find that!");
 });

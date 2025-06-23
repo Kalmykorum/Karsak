@@ -4,11 +4,11 @@ function isAuthenticated(req, res, next) {
   if (req.session && req.session.account) {
     next(); // User is logged in, proceed to the next middleware/route handler
   } else {
-    res.redirect("/login"); // User is not logged in, redirect to login page
+    return res.redirect("/login"); // User is not logged in, redirect to login page
   }
 }
 user.get('/dashboard', isAuthenticated, (req, res) => {
-    res.render("../views/dashboard", {
+    return res.render("../views/dashboard", {
       account: req.session.account,
       title: "Dashboard"
     })
