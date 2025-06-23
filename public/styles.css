@@ -31,7 +31,7 @@ input {
   padding: 12px 0;
   margin-bottom: 10px;
   border-radius: 3px;
-  border: 2px solid transparent;
+  border: 2px solid;
   text-align: center;
   width: 90%;
   font-size: 16px;
@@ -39,9 +39,12 @@ input {
 }
 form .field {
   background-color: #ecf0f1;
+  border-color: rgb(191, 191, 191);
+  border-width: 5;
+  border-style: solid;
 }
 form .field:focus {
-  border: 2px solid #3498db;
+  border-color: #3498db;
 }
 form .btn {
   background-color: #3498db;

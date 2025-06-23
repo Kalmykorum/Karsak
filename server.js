@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 app.use(
   session({
-    secret: "your_secret_key_here",
+    secret: "secret_key",
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 60 * 60 * 1000 },
