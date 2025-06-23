@@ -131,10 +131,8 @@ api.post("/login", async (req, res) => {
 api.post("/logout", (req, res) => {
 	req.session.destroy(err => {
 		if (err) {
-      req.flash('api_error', 'Error logging out')
 			return res.redirect('/dashboard')
 		}
-    req.flash('success_msg', 'Logged out successfully')
 		return res.redirect("/login")
 	})
 })
