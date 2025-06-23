@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #3498db;
+  background-color: #bf7edb;
   font-family: "Arial", sans-serif;
   padding: 50px;
 }
@@ -11,7 +11,7 @@ body {
   padding: 10px;
   width: 300px;
   height: 300px;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 5px;
 }
 h1 {
@@ -47,7 +47,7 @@ form .field:focus {
   border-color: #3498db;
 }
 form .btn {
-  background-color: #3498db;
+  background-color: #8c52a4;
   color: #fff;
   line-height: 25px;
   cursor: pointer;
