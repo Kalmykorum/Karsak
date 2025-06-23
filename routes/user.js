@@ -12,7 +12,6 @@ user.get('/dashboard', isAuthenticated, (req, res) => {
       account: req.session.account,
       title: "Dashboard"
     })
-    // res.sendFile(path.join(__dirname, "../pages/dashboard.html"))
 })
 
 module.exports = user 
