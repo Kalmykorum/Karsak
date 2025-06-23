@@ -1,11 +1,32 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="../../public/styles.css">
+	<link rel="stylesheet" href="/styles.css">
     <title>{{title}}</title>
   </head>
   <body>
-    {{{body}}}
+    <main>
+        {{#if success_msg}}
+            <div class="alert success">
+                {{success_msg}}
+            </div>
+        {{/if}}
+
+        {{#if error_msg}}
+            <div class="alert error">
+                {{error_msg}}
+            </div>
+        {{/if}}
+
+        {{#if api_error}}
+            <div class="alert error">
+                {{api_error}}
+            </div>
+        {{/if}}
+
+        {{{body}}}
+	</main>
   </body>
 </html>

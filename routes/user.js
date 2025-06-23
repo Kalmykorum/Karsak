@@ -1,7 +1,7 @@
 const express = require('express')
 const user = express.Router()
 function isAuthenticated(req, res, next) {
-  if (req.session.account) {
+  if (req.session && req.session.account) {
     next(); // User is logged in, proceed to the next middleware/route handler
   } else {
     res.redirect("/login"); // User is not logged in, redirect to login page

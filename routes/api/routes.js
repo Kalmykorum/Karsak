@@ -39,7 +39,8 @@ api.post("/signup", async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res.status(400).send("Username and password are required.");
+    req.flash('api_error', 'Username and password are required.')
+    return res.redirect("/signup")
   }
 
   db.get(
@@ -48,12 +49,12 @@ api.post("/signup", async (req, res) => {
     async (err, row) => {
       if (err) {
         console.error("Database error during username check:", err.message);
-        return res.status(500).send("An internal server error occurred.");
+        req.flash('api_error', 'An internal server error occurred.')
+        return res.redirect("/signup");
       }
       if (row) {
-        return res
-          .status(409)
-          .send("Username already taken. Please choose a different one.");
+        req.flash('api_error', 'Username already taken, please choose a new one.')
+        return res.redirect("/signup")
       }
 
       try {
@@ -68,20 +69,17 @@ api.post("/signup", async (req, res) => {
                 "Database error during user insertion:",
                 insertErr.message
               );
-              return res
-                .status(500)
-                .send("Failed to register user due to a server error.");
+              req.flash('api_error', 'Failed to register user due to server error')
+              return res.redirect("/signup")
             }
-            return res
-              .status(201)
-              .redirect("/login")
+            req.flash("success_msg", 'Registration successful, please log in.')
+            return res.redirect("/login")
           }
         );
       } catch (hashErr) {
         console.error("Error hashing password:", hashErr.message);
-        return res
-          .status(500)
-          .send("An error occurred during password processing.");
+        req.flash('api_error', 'An error occured during password processing.')
+        return res.redirect("/signup");
       }
     }
   );
@@ -91,7 +89,8 @@ api.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res.status(400).send("Username and password are required.");
+    req.flash('api_error', 'Username and password are required')
+    return res.redirect('/login');
   }
 
   db.get(
@@ -103,10 +102,12 @@ api.post("/login", async (req, res) => {
           "Database error during login username check:",
           err.message
         );
-        return res.status(500).send("An internal server error occurred.");
+        req.flash('api_error', 'An internal server error ocurred.')
+        return res.redirect('/login')
       }
       if (!row) {
-        return res.status(401).send("Invalid username or password.");
+        req.flash('api_error', 'Invalid username or password')
+        return res.redirect('/login')
       }
 
       try {
@@ -114,14 +115,15 @@ api.post("/login", async (req, res) => {
         if (match) {
           req.session.account = { id: row.id, username: row.name };
           return res.redirect("/dashboard")
-        } else {
-          return res.status(401).send("Invalid username or password.");
+        } 
+        else {
+          req.flash('api_error', 'Invalid username or password.')
+          return res.redirect('/login')
         }
       } catch (compareErr) {
         console.error("Error comparing password:", compareErr.message);
-        return res
-          .status(500)
-          .send("An error occurred during password validation.");
+        req.flash('api_error', 'An error occured during password validation')
+        return res.redirect('/login')
       }
     }
   );
@@ -129,9 +131,11 @@ api.post("/login", async (req, res) => {
 api.post("/logout", (req, res) => {
 	req.session.destroy(err => {
 		if (err) {
-			return res.status(500).send('Error logging out');
+      req.flash('api_error', 'Error logging out')
+			return res.redirect('/dashboard')
 		}
-		return res.redirect("/")
+    req.flash('success_msg', 'Logged out successfully')
+		return res.redirect("/login")
 	})
 })
 module.exports = api;
