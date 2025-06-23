@@ -10,7 +10,7 @@ function isAuthenticated(req, res, next) {
 user.get('/dashboard', isAuthenticated, (req, res) => {
     return res.render("../views/dashboard", {
       account: req.session.account,
-      title: "Dashboard"
+      title: "Karsak | Dashboard"
     })
 })
 

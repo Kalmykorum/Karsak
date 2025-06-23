@@ -4,12 +4,12 @@ const auth = express.Router()
 
 auth.get("/login", (req, res) => {
     res.render("../views/login", {
-        title: "Login"
+        title: "Karsak | Login"
     });
 });
 auth.get("/signup", (req, res) => {
     res.render("../views/signup", {
-        title: "Login"
+        title: "Karsak | Signup"
     });
 })
 module.exports = auth
