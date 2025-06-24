@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/dashboard.css">
+  <title>{{title}}</title>
+</head>
+
+<body>
+  <div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <header>
+        <a href="#">Karsak</a>
+      </header>
+      <ul class="nav">
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-view-dashboard"></i>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-link"></i>
+            Shortcuts
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-widgets"></i>
+            Overview
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-calendar"></i>
+            Events
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-info-outline"></i>
+            About
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="zmdi zmdi-settings"></i>
+            Services
+          </a>
+        </li>
+        <li>
+          <form action="/api/logout" method="post" id="logout"><a href="javascript:{}"
+              onclick="document.getElementById('logout').submit()">Logout</a></form>
+          <i class="zmdi zmdi-comment-more"></i>
+        </li>
+      </ul>
+    </div>
+    <!-- Content -->
+    <div id="content">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+              </a>
+            </li>
+            <li><a href="#">{{account.username}}</a></li>
+          </ul>
+        </div>
+      </nav>
+      {{{body}}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
