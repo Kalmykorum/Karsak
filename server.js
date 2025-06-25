@@ -48,7 +48,7 @@ app.use("/api", apiRouter);
 app.use("/", authRouter);
 app.use("/", userRouter);
 app.get("/", (req, res) => {
-  return res.redirect("/dashboard");
+  return res.redirect("/dashboard/home");
 });
 app.listen(port, (err) => {
   if (err) {

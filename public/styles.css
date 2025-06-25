@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #bf7edb;
+  background-color: rgb(32, 33, 36);
   font-family: "Arial", sans-serif;
   padding: 50px;
 }
@@ -23,7 +23,7 @@ h1 {
   text-align: center;
   /*padding-top: 40px;*/
 }
-form {
+.account-form {
   /*padding: 15px;*/
   text-align: center;
 }
@@ -51,11 +51,16 @@ form .btn {
   color: #fff;
   line-height: 25px;
   cursor: pointer;
+  background-color: #303134;
+  border: 1px solid #303134;
+  border-radius: 4px;
+  color: #e8eaed;
+  font-family: Arial, sans-serif;
 }
-form .btn:hover,
-form .btn:active {
-  background-color: #1f78b4;
-  border: 2px solid #1f78b4;
+.account-form .btn:hover,
+.account-form .btn:active {
+  border-color: #ecf0f1;
+  
 }
 .pass-link {
   text-align: center;
@@ -107,4 +112,95 @@ form .btn:active {
 #navbar a.active {
   background-color: #04AA6D;
   color: white;
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 0px;
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+  
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #292929;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #222222;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header span {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+
+#sidebar .nav a{
+  background: none;
+  border-bottom: 1px solid #313335;
+  color: #CFD8DC;
+  font-size: 14px;
+  padding: 16px 24px;
+}
+#sidebar .nav form
+#sidebar .nav a:hover{
+  background: none;
+  color: #ECEFF1;
+}
+
+#sidebar .nav a i{
+  margin-right: 16px;
+}
+#sidebar .nav form {
+  background: none;
+  border-bottom: 1px solid #313335;
+  color: #CFD8DC;
+  font-size: 14px;
+  padding: 16px 16px;
+}
+#sidebar .nav form a {
+  border: none;
+}
+.navbar {
+  background-color: #222222;
+  border: none;
 }
